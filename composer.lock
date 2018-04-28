@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "content-hash": "d5bca48e56bbf3a25645858fcab9c285",
+    "content-hash": "442b9865ab45f95be92835f19d587174",
     "packages": [
         {
             "name": "dnoegel/php-xdg-base-dir",
@@ -815,6 +815,55 @@
                 "psr-3"
             ],
             "time": "2017-06-19T01:22:40+00:00"
+        },
+        {
+            "name": "mopo922/laravel-treats",
+            "version": "v2.0.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/mopo922/LaravelTreats.git",
+                "reference": "cab0207434f67245d016f805358ecd129d942dec"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/mopo922/LaravelTreats/zipball/cab0207434f67245d016f805358ecd129d942dec",
+                "reference": "cab0207434f67245d016f805358ecd129d942dec",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=7.0"
+            },
+            "require-dev": {
+                "laravel/framework": ">=5.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "LaravelTreats\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mark Potter",
+                    "homepage": "https://github.com/mopo922"
+                }
+            ],
+            "description": "A collection of goodies for Laravel 5.",
+            "homepage": "https://github.com/mopo922/LaravelTreats",
+            "keywords": [
+                "api",
+                "controllers",
+                "eloquent",
+                "l5",
+                "laravel",
+                "models",
+                "web"
+            ],
+            "time": "2017-10-25T01:22:04+00:00"
         },
         {
             "name": "nesbot/carbon",
