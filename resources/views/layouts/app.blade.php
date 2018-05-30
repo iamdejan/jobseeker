@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Jobsurfer') }}</title>
 
     <!-- Scripts -->
     <script src="{{ url('../public/js/app.js') }}" defer></script>
@@ -16,6 +16,32 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600" rel="stylesheet" type="text/css">
+    <style type="text/css">
+        .sidenav {
+            height: 100%;
+            width: 200px;
+            position: fixed;
+            top: 55.033px;
+            left: 0;
+            background-color: rgb(200, 230, 250);
+            overflow-x: hidden;
+            padding-top: 1.5rem!important;
+        }
+
+        .sidenav a {
+            padding: 10px 20px 10px 20px;
+            text-decoration: none!important;
+            font-size: 15px;
+            text-align: center;
+            color: rgb(100, 100, 100);
+            display: block;
+        }
+
+        .sidenav a:hover {
+            background-color: white;
+            color: black;
+        }
+    </style>
 
     <!-- Styles -->
     <link href="{{ url('../public/css/app.css') }}" rel="stylesheet">
@@ -25,7 +51,7 @@
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Jobsurfer') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

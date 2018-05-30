@@ -1,6 +1,12 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="sidenav">
+    <a href="#">Staff</a>
+    <a href="#">Client</a>
+    <a href="#">Applicant</a>
+</div>
+
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
