@@ -13,9 +13,27 @@ class CreateUserskillTable extends Migration
      */
     public function up()
     {
-        Schema::create('UserSkill', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::create("UserSkill", function (Blueprint $table) {
+            $table->string("SeekerID");
+            $table->string("SkillID");
+            $table->date("CertificationDate")->nullable();
+            $table->integer("SkillLevel");
+
+            //primary
+            $table->primary(["SeekerID", "SkillID"]);
+
+            //foreign
+            $table->foreign("SeekerID")
+                  ->references("SeekerID")
+                  ->on("Seeker")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
+
+            $table->foreign("SkillID")
+                  ->references("SkillID")
+                  ->on("Skill")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
         });
     }
 
@@ -26,6 +44,6 @@ class CreateUserskillTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('UserSkill');
+        Schema::dropIfExists("UserSkill");
     }
 }

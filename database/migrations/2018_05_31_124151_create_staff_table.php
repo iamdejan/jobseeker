@@ -13,9 +13,13 @@ class CreateSeekerTable extends Migration
      */
     public function up()
     {
-        Schema::create('Staff', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::create("Staff", function (Blueprint $table) {
+            $table->string("StaffID");
+            $table->string("StaffName");
+            $table->string("StaffPosition");
+
+            //primary key
+            $table->primary("StaffId");
         });
     }
 
@@ -26,6 +30,6 @@ class CreateSeekerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Staff');
+        Schema::dropIfExists("Staff");
     }
 }

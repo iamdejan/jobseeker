@@ -13,9 +13,30 @@ class CreateJobTable extends Migration
      */
     public function up()
     {
-        Schema::create('Job', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::create("Job", function (Blueprint $table) {
+            $table->string("JobID");
+            $table->string("JobName");
+            $table->integer("JobSalary");
+            $table->longText("JobDescription");
+
+            $table->char("ClientNPWP", 20);
+            $table->string("StaffID");
+
+            //primary
+            $table->primary("JobID");
+
+            //foreign
+            $table->foreign("ClientNPWP")
+                  ->references("ClientNPWP")
+                  ->on("Client")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
+
+            $table->foreign("StaffID")
+                  ->references("StaffID")
+                  ->on("Staff")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
         });
     }
 
@@ -26,6 +47,6 @@ class CreateJobTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Job');
+        Schema::dropIfExists("Job");
     }
 }

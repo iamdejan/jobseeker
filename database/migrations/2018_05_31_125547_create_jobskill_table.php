@@ -13,9 +13,25 @@ class CreateJobskillTable extends Migration
      */
     public function up()
     {
-        Schema::create('JobSkill', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::create("JobSkill", function (Blueprint $table) {
+            $table->string("SkillID");
+            $table->string("JobID");
+
+            //primary
+            $table->primary(["SkillID", "JobID"]);
+
+            //foreign
+            $table->foreign("SkillID")
+                  ->references("SkillID")
+                  ->on("Skill")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
+
+            $table->foreign("JobID")
+                  ->references("JobID")
+                  ->on("Job")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
         });
     }
 
@@ -26,6 +42,6 @@ class CreateJobskillTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('JobSkill');
+        Schema::dropIfExists("JobSkill");
     }
 }

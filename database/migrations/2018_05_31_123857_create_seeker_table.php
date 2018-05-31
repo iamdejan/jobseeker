@@ -13,9 +13,21 @@ class CreateSeekerTable extends Migration
      */
     public function up()
     {
-        Schema::create('Seeker', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::create("Seeker", function (Blueprint $table) {
+            $table->string("SeekerID");
+            $table->string("fName");
+            $table->string("lName");
+            $table->string("SeekerPhone");
+
+            //login...
+            $table->string("SeekerEmail")->unique();
+            $table->string("SeekerPassword");
+
+            $table->string("SeekerAddress");
+            $table->string("SeekerGender");
+
+            //masukin primary key
+            $table->primary("SeekerID");
         });
     }
 
@@ -26,6 +38,6 @@ class CreateSeekerTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Seeker');
+        Schema::dropIfExists("Seeker");
     }
 }

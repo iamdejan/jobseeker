@@ -13,9 +13,25 @@ class CreatePengawasanTable extends Migration
      */
     public function up()
     {
-        Schema::create('Pengawasan', function (Blueprint $table) {
-            $table->increments('id');
-            $table->timestamps();
+        Schema::create("Pengawasan", function (Blueprint $table) {
+            $table->string("StaffID");
+            $table->string("SuperviseeID");
+
+            //primary
+            $table->primary(["StaffID", "SuperviseeID"]);
+
+            //foreign
+            $table->foreign("StaffID")
+                  ->references("StaffID")
+                  ->on("Staff")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
+
+            $table->foreign("SuperviseeID")
+                  ->references("StaffID")
+                  ->on("Staff")
+                  ->onDelete("cascade")
+                  ->onUpdate("cascade");
         });
     }
 
@@ -26,6 +42,6 @@ class CreatePengawasanTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('Pengawasan');
+        Schema::dropIfExists("Pengawasan");
     }
 }
