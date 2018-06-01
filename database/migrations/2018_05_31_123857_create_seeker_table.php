@@ -19,6 +19,8 @@ class CreateSeekerTable extends Migration
             $table->string("lName");
             $table->string("SeekerPhone");
 
+            $table->rememberToken();
+
             //login...
             $table->string("SeekerEmail")->unique();
             $table->string("SeekerPassword");

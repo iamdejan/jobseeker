@@ -67,22 +67,40 @@
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
                         @guest
-                            <li><a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a></li>
-                            <li><a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a></li>
+                            <li><a class="nav-link" href="{{ url('/seeker/login') }}">Login</a></li>
+                            <li><a class="nav-link" href="{{ url('/seeker/register') }}">Register</a></li>
                         @else
+
+                            @if(Auth::guard('seeker')->check())
+                                @php
+                                $guard = Auth::guard('seeker');
+                                $guardname = "seeker";
+                                @endphp
+                            @elseif(Auth::guard('client')->check())
+                                @php
+                                $guard = Auth::guard('client');
+                                $guardname = "client";
+                                @endphp
+                            @elseif(Auth::guard('staff')->check())
+                                @php
+                                $guard = Auth::guard('staff');
+                                $guardname = "staff";
+                                @endphp
+                            @endif
+
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                    {{ $guard->user()->fName . ' ' . $guard->user()->lName }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    <a class="dropdown-item" href="{{ url('/'. $guardname .'/logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    <form id="logout-form" action="{{ url('/'. $guardname .'/logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
                                 </div>

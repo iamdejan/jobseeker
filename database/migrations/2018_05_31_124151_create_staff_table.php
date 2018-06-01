@@ -18,6 +18,8 @@ class CreateStaffTable extends Migration
             $table->string("StaffName");
             $table->string("StaffPosition");
 
+            $table->rememberToken();
+
             //primary key
             $table->primary("StaffId");
         });

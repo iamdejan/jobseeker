@@ -15,13 +15,13 @@ class Seeker extends Authenticatable
 
     public $timestamps = false;
 
-    public function getAuthIdentifierName()
-    {
-        return "SeekerEmail";
-    }
+    // public function getAuthIdentifierName()
+    // {
+    //     return "SeekerEmail";
+    // }
 
-    public function getAuthPassword()
-    {
-        return $this->SeekerPassword;
-    }
+    // public function getAuthPassword()
+    // {
+    //     return $this->SeekerPassword;
+    // }
 }

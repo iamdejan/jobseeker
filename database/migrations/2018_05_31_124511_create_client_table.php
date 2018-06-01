@@ -27,6 +27,8 @@ class CreateClientTable extends Migration
             $table->longText("ClientDescription");
             $table->integer("ClientRate");
 
+            $table->rememberToken();
+
             //primary key
             $table->primary("ClientNPWP");
 
