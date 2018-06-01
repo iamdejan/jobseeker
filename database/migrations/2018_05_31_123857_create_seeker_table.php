@@ -26,7 +26,7 @@ class CreateSeekerTable extends Migration
             $table->string("SeekerAddress");
             $table->string("SeekerGender");
 
-            //masukin primary key
+            //primary key
             $table->primary("SeekerID");
         });
     }

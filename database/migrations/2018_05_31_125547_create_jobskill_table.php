@@ -17,10 +17,10 @@ class CreateJobskillTable extends Migration
             $table->string("SkillID");
             $table->string("JobID");
 
-            //primary
+            //primary key
             $table->primary(["SkillID", "JobID"]);
 
-            //foreign
+            //foreign key
             $table->foreign("SkillID")
                   ->references("SkillID")
                   ->on("Skill")

@@ -17,10 +17,10 @@ class CreatePengawasanTable extends Migration
             $table->string("StaffID");
             $table->string("SuperviseeID");
 
-            //primary
+            //primary key
             $table->primary(["StaffID", "SuperviseeID"]);
 
-            //foreign
+            //foreign key
             $table->foreign("StaffID")
                   ->references("StaffID")
                   ->on("Staff")

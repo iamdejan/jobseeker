@@ -19,10 +19,10 @@ class CreateUserskillTable extends Migration
             $table->date("CertificationDate")->nullable();
             $table->integer("SkillLevel");
 
-            //primary
+            //primary key
             $table->primary(["SeekerID", "SkillID"]);
 
-            //foreign
+            //foreign key
             $table->foreign("SeekerID")
                   ->references("SeekerID")
                   ->on("Seeker")

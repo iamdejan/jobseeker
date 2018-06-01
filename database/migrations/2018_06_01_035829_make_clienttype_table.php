@@ -17,7 +17,7 @@ class MakeClienttypeTable extends Migration
             $table->string("TypeID");
             $table->string("TypeName");
 
-            //primary
+            //primary key
             $table->primary("TypeID");
         });
     }

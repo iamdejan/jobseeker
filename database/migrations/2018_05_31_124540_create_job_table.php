@@ -22,10 +22,10 @@ class CreateJobTable extends Migration
             $table->char("ClientNPWP", 20);
             $table->string("StaffID");
 
-            //primary
+            //primary key
             $table->primary("JobID");
 
-            //foreign
+            //foreign key
             $table->foreign("ClientNPWP")
                   ->references("ClientNPWP")
                   ->on("Client")
