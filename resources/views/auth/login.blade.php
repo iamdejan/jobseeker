@@ -12,28 +12,28 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="email" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+                            <label for="SeekerEmail" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" required autofocus>
+                                <input id="SeekerEmail" type="SeekerEmail" class="form-control{{ $errors->has('SeekerEmail') ? ' is-invalid' : '' }}" name="SeekerEmail" value="{{ old('SeekerEmail') }}" required autofocus>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('SeekerEmail'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('email') }}</strong>
+                                        <strong>{{ $errors->first('SeekerEmail') }}</strong>
                                     </span>
                                 @endif
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+                            <label for="SeekerPassword" class="col-md-4 col-form-label text-md-right">{{ __('password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password" required>
+                                <input id="SeekerPassword" type="password" class="form-control{{ $errors->has('SeekerPassword') ? ' is-invalid' : '' }}" name="SeekerPassword" required>
 
-                                @if ($errors->has('password'))
+                                @if ($errors->has('SeekerPassword'))
                                     <span class="invalid-feedback">
-                                        <strong>{{ $errors->first('password') }}</strong>
+                                        <strong>{{ $errors->first('SeekerPassword') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -56,7 +56,7 @@
                                 </button>
 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
+                                    {{ __('Forgot Your password?') }}
                                 </a>
                             </div>
                         </div>

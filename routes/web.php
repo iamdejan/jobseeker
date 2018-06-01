@@ -11,10 +11,15 @@
 |
 */
 
+
+
 Route::get('/', function () {
     return view("welcome");
+    //die(Hash::make("1234efgh"));
 });
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get("/seeker/home", "SeekerController@index");
+Route::get("/client/home", "ClientController@index");
+Route::get("/staff/home", "StaffController@index");
