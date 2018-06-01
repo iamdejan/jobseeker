@@ -16,6 +16,9 @@ class MakeClienttypeTable extends Migration
         Schema::create("ClientType", function (Blueprint $table) {
             $table->string("TypeID");
             $table->string("TypeName");
+
+            //primary
+            $table->primary("TypeID");
         });
     }
 
