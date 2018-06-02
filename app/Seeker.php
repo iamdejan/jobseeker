@@ -10,18 +10,10 @@ class Seeker extends Authenticatable
     use Notifiable;
 
     protected $table = "Seeker";
-
     public $primaryKey = "SeekerID";
-
+    protected $guard = "seeker";
     public $timestamps = false;
 
-    // public function getAuthIdentifierName()
-    // {
-    //     return "SeekerEmail";
-    // }
-
-    // public function getAuthPassword()
-    // {
-    //     return $this->SeekerPassword;
-    // }
+    public $incrementing = false;
+    public $keyType = "string";
 }

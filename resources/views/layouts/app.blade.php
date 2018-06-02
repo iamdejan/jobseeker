@@ -50,7 +50,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/') }}">
+                <a class="navbar-brand" href="{{ url('/seeker/home') }}">
                     {{ config('app.name', 'Jobsurfer') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,22 +75,25 @@
                                 @php
                                 $guard = Auth::guard('seeker');
                                 $guardname = "seeker";
+                                $name = $guard->user()->fName . ' ' . $guard->user()->lName;
                                 @endphp
                             @elseif(Auth::guard('client')->check())
                                 @php
                                 $guard = Auth::guard('client');
                                 $guardname = "client";
+                                $name = $guard->user()->ClientName;
                                 @endphp
                             @elseif(Auth::guard('staff')->check())
                                 @php
                                 $guard = Auth::guard('staff');
                                 $guardname = "staff";
+                                $name = $guard->user()->StaffName;
                                 @endphp
                             @endif
 
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ $guard->user()->fName . ' ' . $guard->user()->lName }} <span class="caret"></span>
+                                    {{ $name }} <span class="caret"></span>
                                 </a>
 
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">

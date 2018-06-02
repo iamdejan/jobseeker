@@ -14,14 +14,17 @@ class CreateStaffTable extends Migration
     public function up()
     {
         Schema::create("Staff", function (Blueprint $table) {
+            //login
             $table->string("StaffID");
+            $table->string("StaffPassword");
+
             $table->string("StaffName");
             $table->string("StaffPosition");
 
             $table->rememberToken();
 
             //primary key
-            $table->primary("StaffId");
+            $table->primary("StaffID");
         });
     }
 
