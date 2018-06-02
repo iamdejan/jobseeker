@@ -32,6 +32,7 @@ class SeekerLoginController extends Controller
     	if($seeker && Hash::check($request->SeekerPassword, $seeker->SeekerPassword)) {
     		//3. if successfull, redirect
     		Auth::guard("seeker")->login($seeker);
+            
     		return redirect()->intended(url("/seeker/home"));
     	} else {
     		//4. if not success, go back

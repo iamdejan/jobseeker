@@ -15,14 +15,6 @@ Route::get('/', function () {
     return view("welcome");
 });
 
-Route::get("/home", function () {
-	return redirect("/");
-});
-
-Route::get("/login", function () {
-	echo "fuck you";
-})->name("login");
-
 //Auth::routes();
 Route::get("/seeker/login", "Auth\SeekerLoginController@showLoginForm"); //udah
 Route::post("/seeker/login", "Auth\SeekerLoginController@login"); //udah

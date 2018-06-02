@@ -20,6 +20,8 @@ class ClientLoginController extends Controller
     	return view("client.login");
     }
 
+    protected $redirectTO = "/client/home";
+
     public function login(Request $request)
     {
     	//1. validate input
@@ -35,8 +37,9 @@ class ClientLoginController extends Controller
 
             //die("Success!");
 
-    		return redirect()->intended(url("/client/home"));
+            return redirect()->intended(url("/client/home"));
     	} else {
+
     		//4. if not success, go back
     		if(!$client) {
     			die("Email dosen't match");
