@@ -20,8 +20,6 @@ class ClientLoginController extends Controller
     	return view("client.login");
     }
 
-    protected $redirectTO = "/client/home";
-
     public function login(Request $request)
     {
     	//1. validate input
@@ -32,12 +30,18 @@ class ClientLoginController extends Controller
     	$client = Client::where("ClientEmail", $request->ClientEmail)->first();
 
     	if($client && Hash::check($request->ClientPassword, $client->ClientPassword)) {
+
     		//3. if successfull, redirect
     		Auth::guard("client")->login($client);
 
-            //die("Success!");
+            //dd(Auth::guard("client")->user());
+            //die();
+
+            // print_r(Auth::guard("client")->check());
+            // die();
 
             return redirect()->intended(url("/client/home"));
+            
     	} else {
 
     		//4. if not success, go back
