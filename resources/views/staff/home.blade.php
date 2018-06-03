@@ -3,11 +3,11 @@
 @section('content')
 @if(Auth::guard('staff')->check())
 <div class="sidenav">
-    <a href="{{ url('/staff/manage/staff') }}">Staff</a>
-    <a href="{{ url('/staff/manage/client') }}">Client</a>
-    <a href="{{ url('/staff/manage/seeker') }}">Applicant</a>
-    <a href="{{ url('/staff/manage/job') }}">Job</a>
-    <a href="{{ url('/staff/manage/skill') }}">Skill</a>
+    <a href="{{ url('/staff/manages/staff') }}">Staff</a>
+    <a href="{{ url('/staff/manages/client') }}">Client</a>
+    <a href="{{ url('/staff/manages/seeker') }}">Applicant</a>
+    <a href="{{ url('/staff/manages/job') }}">Job</a>
+    <a href="{{ url('/staff/manages/skill') }}">Skill</a>
 </div>
 @endif
 

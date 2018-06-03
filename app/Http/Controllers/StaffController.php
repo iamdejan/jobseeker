@@ -48,9 +48,9 @@ class StaffController extends Controller
             $data = Skill::all(); //CRUD
         }
 
-        // dd($data);
+        // dd($data->toArray());
         // die();
 
-        return view("staff.manage", compact("data"));
+        return view("staff.manages." . $type)->with("data", $data);
     }
 }

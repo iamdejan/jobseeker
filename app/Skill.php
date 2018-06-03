@@ -15,6 +15,10 @@ class Skill extends Model
 
     protected $guarded = [];
 
+    public $attributes = [];
+    public $original = [];
+
+
     public function jobs()
     {
     	return $this->belongsToMany("App\Job", "JobSkill", "SkillID", "JobID");

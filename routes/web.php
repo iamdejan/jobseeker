@@ -37,6 +37,6 @@ Route::get("/staff/register", "Auth\StaffRegisterController@showRegistrationForm
 Route::post("/staff/register", "Auth\StaffRegisterController@register");
 //manage
 Route::get("/staff/home", "StaffController@index");
-Route::get("/staff/manage/{seeker}", "StaffController@manage");
+Route::get("/staff/manages/{type}", "StaffController@manage");
 
 ?>
