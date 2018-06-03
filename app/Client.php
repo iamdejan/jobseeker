@@ -10,7 +10,7 @@ class Client extends Authenticatable
     use Notifiable;
 
     protected $table = "Client";
-    public $primaryKey = "ClientID";
+    public $primaryKey = "ClientNPWP";
     protected $guard = "client";
     public $timestamps = false;
 
