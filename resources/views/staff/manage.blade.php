@@ -1,11 +1,14 @@
 @extends('layouts.app')
 
 @section('content')
+
 @if(Auth::guard('staff')->check())
 <div class="sidenav">
     <a href="{{ url('/staff/manage/staff') }}">Staff</a>
     <a href="{{ url('/staff/manage/client') }}">Client</a>
     <a href="{{ url('/staff/manage/seeker') }}">Applicant</a>
+    <a href="{{ url('/staff/manage/job') }}">Job</a>
+    <a href="{{ url('/staff/manage/skill') }}">Skill</a>
 </div>
 @endif
 
@@ -16,13 +19,9 @@
                 <div class="card-header">Welcome, {{ Auth::guard("staff")->user()->StaffName }}</div>
 
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    You are logged in as STAFF!
+                    <table class="table table-stripped">
+                        
+                    </table>
                 </div>
             </div>
         </div>
