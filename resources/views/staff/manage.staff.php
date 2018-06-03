@@ -6,8 +6,6 @@
     <a href="{{ url('/staff/manage/staff') }}">Staff</a>
     <a href="{{ url('/staff/manage/client') }}">Client</a>
     <a href="{{ url('/staff/manage/seeker') }}">Applicant</a>
-    <a href="{{ url('/staff/manage/job') }}">Job</a>
-    <a href="{{ url('/staff/manage/skill') }}">Skill</a>
 </div>
 @endif
 

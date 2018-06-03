@@ -21,5 +21,9 @@ class Client extends Authenticatable
     {
         return "ClientEmail";
     }
-    
+
+    public function jobs()
+    {
+        return $this->hasMany("App\Job", "ClientNPWP", "ClientNPWP");
+    }
 }

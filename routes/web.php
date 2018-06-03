@@ -35,6 +35,8 @@ Route::post("/staff/login", "Auth\StaffLoginController@login"); //udah
 Route::post("/staff/logout", "Auth\StaffLoginController@logout"); //udah
 Route::get("/staff/register", "Auth\StaffRegisterController@showRegistrationForm");
 Route::post("/staff/register", "Auth\StaffRegisterController@register");
+//manage
 Route::get("/staff/home", "StaffController@index");
+Route::get("/staff/manage/{seeker}", "StaffController@manage");
 
 ?>

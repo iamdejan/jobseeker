@@ -11,4 +11,14 @@ class Skill extends Model
 
     public $incrementing = false;
     public $keyType = "string";
+
+    public function jobs()
+    {
+    	return $this->belongsToMany("App\Job", "JobSkill", "SkillID", "JobID");
+    }
+
+    public function seekers()
+    {
+    	return $this->belongsToMany("App\Seeker", "UserSkill", "SkillID", "SeekerID");
+    }
 }

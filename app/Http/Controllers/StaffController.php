@@ -3,6 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Seeker as Seeker;
+use App\Staff as Staff;
+use App\Client as Client;
+use App\Job as Job;
+use App\Skill as Skill;
 
 class StaffController extends Controller
 {
@@ -27,64 +32,25 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function manage($type)
     {
-        //
-    }
+        $data = null;
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        if($type == "seeker") {
+            $data = Seeker::all(); //D
+        } else if($type == "staff") {
+            $data = Staff::all(); //D & akan direvisi
+        } else if($type == "client") {
+            $data = Client::all(); //D
+        } else if($type == "job") {
+            $data = Job::all(); //D
+        } else if($type == "skill") {
+            $data = Skill::all(); //CRUD
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        dd($data);
+        die();
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        //return view("staff.manage", compact("data"));
     }
 }
