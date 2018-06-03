@@ -15,9 +15,6 @@ class Skill extends Model
 
     protected $guarded = [];
 
-    public $attributes = [];
-    public $original = [];
-
 
     public function jobs()
     {

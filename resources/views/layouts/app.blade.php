@@ -19,7 +19,7 @@
     <style type="text/css">
         .sidenav {
             height: 100%;
-            width: 200px;
+            width: 181px;
             position: fixed;
             top: 55.033px;
             left: 0;
@@ -50,7 +50,20 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('/seeker/home') }}">
+                @if(Auth::guard('seeker')->check())
+                    @php
+                    $guardname = "seeker";
+                    @endphp
+                @elseif(Auth::guard('client')->check())
+                    @php
+                    $guardname = "client";
+                    @endphp
+                @elseif(Auth::guard('staff')->check())
+                    @php
+                    $guardname = "staff";
+                    @endphp
+                @endif
+                <a class="navbar-brand" href="{{ url('/'. $guardname .'/home') }}">
                     {{ config('app.name', 'Jobsurfer') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

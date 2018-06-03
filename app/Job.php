@@ -8,6 +8,7 @@ class Job extends Model
 {
     protected $table = "Job";
     protected $primaryKey = "JobID";
+    public $timestamps = false;
 
     public $incrementing = false;
     public $keyType = "string";
