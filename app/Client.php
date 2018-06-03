@@ -26,4 +26,9 @@ class Client extends Authenticatable
     {
         return $this->hasMany("App\Job", "ClientNPWP", "ClientNPWP");
     }
+
+    public function type()
+    {
+        return $this->belongsTo("App\ClientType", "TypeID", "TypeID");
+    }
 }

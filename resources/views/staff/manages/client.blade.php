@@ -16,23 +16,26 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Skill Manager</div>
+                <div class="card-header">Client Manager</div>
 
                 <div class="card-body">
                     <table class="table table-stripped">
                         <thead>
                             <tr>
-                                @foreach($data->toArray()[0] as $attrKey => $attribute)
-                                    <th scope="col">{{ $attrKey }}</th>
-                                @endforeach
+                                <th scope="col">Client NPWP</th>
+                                <th scope="col">Client Name</th>
+                                <th scope="col">Client Type</th>
+                                <th scope="col">Client Rate</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($data->toArray() as $key => $value)
+                            @foreach($data as $key => $value)
                                 <tr>
-                                    @foreach($value as $val)
-                                        <td>{{ $val }}</td>
-                                    @endforeach
+                                    <td>{{ $value->ClientNPWP }}</td>
+                                    <td>{{ $value->ClientName }}</td>
+                                    <td>{{ $value->type->TypeName }}</td>
+                                    <td>{{ $value->ClientRate }}</td>
                                 </tr>
                             @endforeach
                         </tbody>
