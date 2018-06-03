@@ -11,6 +11,9 @@ class Skill extends Model
 
     public $incrementing = false;
     public $keyType = "string";
+    public $timestamps = false;
+
+    protected $guarded = [];
 
     public function jobs()
     {
