@@ -10,6 +10,9 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
+        <link href="{{ url('../public/css/app.css') }}" rel="stylesheet">
+        <script src="{{ url('../public/js/app.js') }}" defer></script>
+
         <!-- Styles -->
         <style>
             html, body {
@@ -57,6 +60,7 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
+                margin: 0 25px;
             }
 
             .m-b-md {
@@ -81,12 +85,6 @@
                 </div>
 
                 <div class="links">
-                    <!-- <a href="https://laravel.com/docs">Documentation</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a> -->
-
                     <a>Giovanni Dejan</a>
                     <a>Byran Karunachandra</a>
                     <a>Teguh Wibowo Wijaya</a>
