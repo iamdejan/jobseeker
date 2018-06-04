@@ -60,7 +60,6 @@
                 letter-spacing: .1rem;
                 text-decoration: none;
                 text-transform: uppercase;
-                margin: 0 25px;
             }
 
             .m-b-md {
@@ -90,6 +89,18 @@
                     <a>Teguh Wibowo Wijaya</a>
                     <a>Vincent Tansol</a>
                 </div>
+                <br><br>
+                <form class="links" style="display: flex!important;">
+                    @csrf
+                    <a style="width: 50%;"><input class="form-control form-control-lg" type="text" placeholder="Job"></a>
+                    <a style="width: 50%;">
+                        <select class="form-control form-control-lg">
+                            <option selected>Location</option>
+                        </select>
+                    </a>
+                    <a><button type="submit" class="btn btn-primary">Submit</button></a>
+                </form>
+
             </div>
         </div>
     </body>
