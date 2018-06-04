@@ -94,9 +94,7 @@
                     @csrf
                     <a style="width: 50%;"><input class="form-control form-control-lg" type="text" placeholder="Job"></a>
                     <a style="width: 50%;">
-                        <select class="form-control form-control-lg">
-                            <option selected>Location</option>
-                        </select>
+                        <input class="form-control form-control-lg" type="text" name="location" placeholder="Location">
                     </a>
                     <a><button type="submit" class="btn btn-primary">Submit</button></a>
                 </form>

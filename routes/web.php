@@ -11,8 +11,28 @@
 |
 */
 
+use Illuminate\Http\Request;
+use App\Job as Job;
+
 Route::get('/', function () {
     return view("welcome");
+});
+
+Route::get("/jobs/search", function (Request $request) {
+	$keyword = $request->input("job");
+	$location = $request->input("location");
+
+	$jobs = [];
+
+	foreach (Job::all() as $job) {
+		if(str_contains(strtolower($job->JobName), strtolower($keyword)) &&
+		   str_contains(strtolower($job->client->ClientAddress), strtolower($location))) {
+			$jobs[] = $job;
+		}
+	}
+
+	dd($jobs);
+	die();
 });
 
 //Auth::routes();
