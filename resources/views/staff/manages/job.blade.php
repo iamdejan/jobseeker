@@ -28,6 +28,7 @@
                                 <th scope="col">Job Desc.</th>
                                 <th scope="col">Client</th>
                                 <th scope="col">Skill</th>
+                                <th scope="col"></th>
                             </tr>
                         </thead>
                         <tbody>
@@ -50,6 +51,7 @@
                                             @endif
                                         @endfor
                                     </td>
+                                    <td><a href="{{ url('/staff/deletes/job/' . $value->JobID) }}" class="btn btn-danger">Delete</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

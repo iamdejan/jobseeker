@@ -34,7 +34,7 @@ class StaffController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function manage($type)
+    public function manages($type)
     {
         $data = null;
 
@@ -56,5 +56,59 @@ class StaffController extends Controller
         // die();
 
         return view("staff.manages." . $type)->with("data", $data);
+    }
+
+    public function delete($type, string $id)
+    {
+        $item = null;
+
+        if($type == "seeker") {
+            $item = Seeker::find($id);
+        } else if($type == "staff") {
+            $item = Staff::find($id);
+        } else if($type == "client") {
+            $item = Client::find($id);
+        } else if($type == "skill") {
+            $item = Skill::find($id);
+        } else if($type == "job") {
+            $item = Job::find($id);
+        }
+
+        dd($item);
+        die();
+
+        // $item->delete();
+        // unset($item);
+
+        return redirect()->back();
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create($type)
+    {
+        return view("staff.new." . $type);
+    }
+
+    public function store(Request $request, $type)
+    {
+        // print_r($request->all());
+        // die();
+
+        $skill = new Skill();
+
+        $skill->SkillID = $request->input("skill_id");
+        $skill->SkillName = $request->input("skill_name");
+
+        // dd($skill);
+        // die();
+
+        $skill->save();
+
+        return redirect('/staff/manages/'.$type);
+
     }
 }

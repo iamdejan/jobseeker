@@ -48,22 +48,25 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light navbar-laravel">
+        <nav style="position: relative;" class="navbar navbar-expand-md navbar-light navbar-laravel">
             <div class="container">
+                @php
+                $url = "/";
+                @endphp
                 @if(Auth::guard('seeker')->check())
                     @php
-                    $guardname = "seeker";
+                    $url = "/seeker/home";
                     @endphp
                 @elseif(Auth::guard('client')->check())
                     @php
-                    $guardname = "client";
+                    $url = "/client/home";
                     @endphp
                 @elseif(Auth::guard('staff')->check())
                     @php
-                    $guardname = "staff";
+                    $url = "/staff/home";
                     @endphp
                 @endif
-                <a class="navbar-brand" href="{{ url('/'. $guardname .'/home') }}">
+                <a class="navbar-brand" href="{{ url($url) }}">
                     {{ config('app.name', 'Jobsurfer') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

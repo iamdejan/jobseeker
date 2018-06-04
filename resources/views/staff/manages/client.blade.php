@@ -26,7 +26,7 @@
                                 <th scope="col">Client Name</th>
                                 <th scope="col">Client Type</th>
                                 <th scope="col">Client Rate</th>
-
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -36,6 +36,7 @@
                                     <td>{{ $value->ClientName }}</td>
                                     <td>{{ $value->type->TypeName }}</td>
                                     <td>{{ $value->ClientRate }}</td>
+                                    <td><a class="btn btn-danger" href="{{ url('/staff/deletes/client/' . $value->ClientNPWP) }}">Delete</a></td>
                                 </tr>
                             @endforeach
                         </tbody>

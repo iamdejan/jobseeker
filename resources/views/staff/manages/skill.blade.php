@@ -14,25 +14,29 @@
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-9">
             <div class="card">
                 <div class="card-header">Skill Manager</div>
 
                 <div class="card-body">
-                    <table class="table table-stripped">
+                    <a href="{{ url('/staff/skill/new') }}" class="btn btn-success">Insert new skill</a>
+                    <table class="table table-stripped" width="90%">
                         <thead>
                             <tr>
                                 @foreach($data->toArray()[0] as $attrKey => $attribute)
                                     <th scope="col">{{ $attrKey }}</th>
                                 @endforeach
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data->toArray() as $key => $value)
                                 <tr>
-                                    @foreach($value as $val)
-                                        <td>{{ $val }}</td>
-                                    @endforeach
+                                    <td width="10%">{{ $value["SkillID"] }}</td>
+                                    <td width="60%">{{ $value["SkillName"] }}</td>
+                                    <td width="10%">
+                                        <a class="btn btn-danger" href="{{ url('/staff/deletes/skill/'. $value['SkillID']) }}">Delete</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>

@@ -26,16 +26,19 @@
                                 <th scope="col">Name</th>
                                 <th scope="col">Address</th>
                                 <th scope="col">Gender</th>
-
+                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach($data as $key => $value)
                                 <tr>
-                                    <td>{{ $value->SeekerID }}</td>
+                                    <td width="15%">{{ $value->SeekerID }}</td>
                                     <td>{{ $value->fName . ' ' . $value->lName }}</td>
                                     <td>{{ $value->SeekerAddress }}</td>
-                                    <td>{{ $value->SeekerGender }}</td>
+                                    <td width="10%">{{ $value->SeekerGender }}</td>
+                                    <td>
+                                        <a href="{{ url('/staff/deletes/seeker/' . $value->SeekerID) }}" class="btn btn-danger">Delete</a>
+                                    </td>
                                 </tr>
                             @endforeach
                         </tbody>
