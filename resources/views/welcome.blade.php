@@ -96,7 +96,7 @@
                     <a style="width: 50%;">
                         <input class="form-control form-control-lg" type="text" name="location" placeholder="Location">
                     </a>
-                    <a><button type="submit" class="btn btn-primary">Submit</button></a>
+                    <a><button type="submit" class="btn btn-primary">Search</button></a>
                 </form>
 
             </div>
