@@ -17,6 +17,8 @@ class Staff extends Authenticatable
     public $incrementing = false;
     public $keyType = "string";
 
+    protected $fillable = ["StaffID", "StaffName", "StaffPassword", "StaffPosition"];
+
     public function jobs()
     {
     	return $this->hasMany("App\Job", "StaffID");

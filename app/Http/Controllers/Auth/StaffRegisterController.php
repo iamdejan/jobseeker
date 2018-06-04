@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Seeker as Seeker;
+use App\Staff as Staff;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -53,11 +53,15 @@ class StaffRegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        // return Validator::make($data, [
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:6|confirmed',
-        // ]);
+        if($data["StaffPassword"] &&
+           $data["StaffPassword"] != "" &&
+           $data["StaffPassword"] == $data["password_confirmation"]) {
+            return Validator::make($data, [
+                'StaffID' => 'required|string|max:255',
+                'StaffName' => 'required|string|max:255',
+            ]);
+        }
+        return false;
     }
 
     /**
@@ -68,10 +72,11 @@ class StaffRegisterController extends Controller
      */
     protected function create(array $data)
     {
-        // return Seeker::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
+        return Staff::create([
+            'StaffID' => $data['StaffID'],
+            'StaffName' => $data['StaffName'],
+            'StaffPassword' => Hash::make($data['StaffPassword']),
+            'StaffPosition' => "Officer"
+        ]);
     }
 }
