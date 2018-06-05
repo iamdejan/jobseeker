@@ -41,7 +41,9 @@ Route::post("/seeker/login", "Auth\SeekerLoginController@login"); //udah
 Route::post("/seeker/logout", "Auth\SeekerLoginController@logout"); //udah
 Route::get("/seeker/register", "Auth\SeekerRegisterController@showRegistrationForm");
 Route::post("/seeker/register", "Auth\SeekerRegisterController@register");
+//manage
 Route::get("/seeker/home", "SeekerController@index");
+Route::get("/seeker/jobs", "SeekerController@showAllJobs");
 
 Route::get("/client/login", "Auth\ClientLoginController@showLoginForm"); //udah
 Route::post("/client/login", "Auth\ClientLoginController@login"); //udah

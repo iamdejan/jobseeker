@@ -27,4 +27,9 @@ class Job extends Model
     {
         return $this->belongsToMany("App\Skill", "JobSkill", "JobID", "SkillID");
     }
+
+    public function seekers()
+    {
+        return $this->belongsToMany("App\Seeker", "ApplyQueue", "JobID", "SeekerID");
+    }
 }
