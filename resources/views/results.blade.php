@@ -2,21 +2,13 @@
 
 @section('content')
 
-<div class="sidenav">
-    <a href="{{ url('/client/home') }}">My Profile</a>
-    <a href="{{ url('/client/jobs') }}">Job Management</a>
-    <a href="{{ url('/client/seekers') }}">View Applicants</a>
-    <a href="{{ url('/client/job/new') }}">Add New Job</a>
-</div>
-
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-10">
             <div class="card">
-                <div class="card-header">Skill Manager</div>
+                <div class="card-header">Results</div>
 
                 <div class="card-body">
-                    <a href="{{ url('client/job/new') }}" class="btn btn-success">Add new job</a> 
                     <table class="table table-stripped" width="90%">
                         <thead>
                             <tr>
@@ -24,7 +16,6 @@
                                 <th scope="col">Job Name</th>
                                 <th scope="col">Salary</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Action</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -32,12 +23,14 @@
                                 <tr>
                                     <th>{{ $job->JobID }}</th>
                                     <th>{{ $job->JobName }}</th>
-                                    <th>{{ $job->JobSalary }}</th>
-                                    <th>{{ $job->JobDescription }}</th>
                                     <th>
-                                        <a href="{{ url('/client/edits/job/' . $job->JobID) }}" class="btn btn-secondary">Edit</a>
-                                        <a href="{{ url('/client/deletes/job/' . $job->JobID) }}" class="btn btn-danger">Delete</a>
+                                        @if(Auth::guard("seeker")->check())
+                                            {{ $job->JobSalary }}
+                                        @else
+                                            <a href="{{ url('/seeker/login') }}">Login to see salary</a>
+                                        @endif
                                     </th>
+                                    <th>{{ $job->JobDescription }}</th>
                                 </tr>
                             @endforeach
                         </tbody>

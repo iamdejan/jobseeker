@@ -48,8 +48,10 @@ class ClientController extends Controller
     public function store(Request $request)
     {
 
+        $temp = substr(Job::latest("JobID")->first()->JobID, 3);
+
         $job = new Job();
-        $job->JobID = $request->input("JobID");
+        $job->JobID = "JB" . sprintf("%04d", intval($temp) + 1);
         $job->JobName = $request->input("JobName");
         $job->JobSalary = intval($request->input("JobSalary"));
         $job->JobDescription = $request->input("JobDesc");
@@ -71,9 +73,9 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function edit($id)
     {
-        //
+        return view("client.editjob")->with("job", Job::find($id));
     }
 
     /**
@@ -82,21 +84,22 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        // dd($request->all());
+        // die();
+
+        $job = Job::find($id);
+        $job->JobName = $request->input("JobName");
+        $job->JobSalary = intval($request->input("JobSalary"));
+        $job->JobDescription = $request->input("JobDesc");
+
+        // dd($job);
+        // die();
+
+        $job->update();
+        
+        return redirect("/client/jobs");
     }
 
     /**

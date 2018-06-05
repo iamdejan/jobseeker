@@ -3,52 +3,49 @@
 @section('content')
 
 <div class="sidenav">
+    <a href=""><img src="#" class="rounded mx-auto d-block" alt="Seeker Photo" style="border: 1px solid black; border-radius: 50%;"></a>
     <a href="{{ url('/seeker/home') }}">My Profile</a>
     <a href="{{ url('/seeker/jobs') }}">Job Applied</a>
 </div>
 
 <div class="container">
     <div class="row justify-content-center">
-        <div class="row">
-            <!-- Photo Profile Of Client/Employer -->
-            <div class="col-sm-4">
-                <img src="<!-- url gambar -->" class="rounded mx-auto d-block" alt="Seeker Photo" style="border: 1px solid black; border-radius: 50%;">
-                <!-- Brief Description of the Company -->
-                <ul class="list-group">
-                  <li class="list-group-item">
-                    Client Name: 
-
-                  </li>
-                  <li class="list-group-item">
-                    bla bla bla
-
-                  </li>
-                  <li class="list-group-item">
-                    bla bla bla
-
-                  </li>
-                  <li class="list-group-item">
-                    bla bla bla
-
-                  </li>
-                  <li class="list-group-item">
-                    bla bla bla
-
-                  </li>
-                </ul>
-            </div>
-            <!-- Job Description -->
             <div class="col-sm-8">
-                <h3>Job Title</h3><br><br>
+                <div class="card">
+                    <div class="card-header">
+                        <h3>{{ $job->JobName }}</h3>
+                    </div>
 
-                <h4>Job Description</h4><br>
-                <p>Deskripsi jobnya</p><br>
-                
-                <h4>Your Cover Letter</h4>
-                <p>tempat buat ngetik cover letter kita</p>
-                <button>Submit Cover Letter</button>
+                    <div class="card-body">
+                        @if(DB::table('applyqueue')->where('SeekerID', Auth::guard('seeker')->user()->SeekerID)
+                                                   ->where('JobID', $job->JobID)->first() == null)
+                            Salary: Rp {{ $job->JobSalary }}<br><br>
+                            Description:<br>
+                            {{ $job->JobDescription }}<br>
+                            <br>
+                            Skills needed:<br>
+                            @foreach($job->skills as $skill)
+                                - {{ $skill->SkillName }}<br>
+                            @endforeach
+                            <br>
+                            Client: {{ $job->client->ClientName }}<br><br>
+
+                            <form method="POST" action="{{ url('/seeker/apply/' . $job->JobID) }}">
+                                @csrf
+                                Why do you want this job?<br>
+                                <textarea name="description"></textarea><br>
+
+                                <button type="submit" class="btn btn-success">Apply!</a>
+                            </form>
+                        @else
+                            You already apply!
+                        @endif
+                    </dic>
+                </div>
+
             </div>
-        </div>
+        <!-- </div> -->
+        
     </div>
 </div>
 @endsection

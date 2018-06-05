@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="sidenav">
-    <a href=""><img src="<!-- url gambar -->" class="rounded mx-auto d-block" alt="Seeker Photo" style="border: 1px solid black; border-radius: 50%;"></a>
+    <a href=""><img src="#" class="rounded mx-auto d-block" alt="Seeker Photo" style="border: 1px solid black; border-radius: 50%;"></a>
     <a href="{{ url('/seeker/home') }}">My Profile</a>
     <a href="{{ url('/seeker/jobs') }}">Job Applied</a>
 </div>

@@ -34,8 +34,10 @@ Route::post("/jobs/search", function (Request $request) {
 		}
 	}
 
-	dd($jobs);
-	die();
+	// dd($jobs);
+	// die();
+
+	return view("results", compact("jobs"));
 });
 
 //Auth::routes();
@@ -47,6 +49,8 @@ Route::post("/seeker/register", "Auth\SeekerRegisterController@register");
 //manage
 Route::get("/seeker/home", "SeekerController@index");
 Route::get("/seeker/jobs", "SeekerController@showAllJobs");
+Route::get("/seeker/apply/{JobID}", "SeekerController@showApplyForm");
+Route::post("/seeker/apply/{JobID}", "SeekerController@apply");
 
 Route::get("/client/login", "Auth\ClientLoginController@showLoginForm"); //udah
 Route::post("/client/login", "Auth\ClientLoginController@login"); //udah
@@ -61,7 +65,8 @@ Route::get("/client/seekers", "ClientController@showSeekers");
 Route::get("/client/job/new", "ClientController@create");
 Route::post("/client/job/store", "ClientController@store");
 Route::get("/client/deletes/job/{JobID}", "ClientController@delete");
-
+Route::get("/client/edits/job/{JobID}", "ClientController@edit");
+Route::post("/client/edits/job/{JobID}", "ClientController@update");
 
 Route::get("/staff/login", "Auth\StaffLoginController@showLoginForm"); //udah
 Route::post("/staff/login", "Auth\StaffLoginController@login"); //udah
@@ -74,5 +79,7 @@ Route::get("/staff/manages/{type}", "StaffController@manages");
 Route::get("/staff/deletes/{type}/{SkillID}", "StaffController@delete"); //delete
 Route::get("/staff/{type}/new", "StaffController@create"); //form
 Route::post("/staff/{type}/new", "StaffController@store"); //store
+Route::get("/staff/{type}/edit/{StaffID}", "StaffController@edit");
+Route::post("/staff/{type}/edit/{StaffID}", "StaffController@update");
 
 ?>

@@ -6,7 +6,7 @@
     <a href="{{ url('/client/home') }}">My Profile</a>
     <a href="{{ url('/client/jobs') }}">Job Management</a>
     <a href="{{ url('/client/seekers') }}">View Applicants</a>
-    <a href="{{ url('/client/jobs/new') }}">Add New Job</a>
+    <a href="{{ url('/client/job/new') }}">Add New Job</a>
 </div>
 
 <div class="container">

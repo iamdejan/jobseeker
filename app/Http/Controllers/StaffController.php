@@ -43,7 +43,7 @@ class StaffController extends Controller
         } else if($type == "staff") {
             $manage = DB::table("pengawasan")->where("StaffID", Auth::guard("staff")->user()->StaffID)->select("SuperviseeID")->pluck("SuperviseeID")->toArray();
 
-            $data = Staff::whereIn("StaffID", $manage)->get(); //D & akan direvisi
+            $data = Staff::whereIn("StaffID", $manage)->get();
         } else if($type == "client") {
             $data = Client::all(); //D
         } else if($type == "job") {
@@ -93,14 +93,13 @@ class StaffController extends Controller
         return view("staff.new." . $type);
     }
 
-    public function store(Request $request, $type)
+    public function store(Request $request, $type = "skill")
     {
-        // print_r($request->all());
-        // die();
+        $temp = substr(Skill::latest("SkillID")->first()->SkillID, 3);
 
         $skill = new Skill();
 
-        $skill->SkillID = $request->input("skill_id");
+        $skill->SkillID = "SL" . sprintf("%04d", intval($temp) + 1);
         $skill->SkillName = $request->input("skill_name");
 
         // dd($skill);
@@ -110,5 +109,22 @@ class StaffController extends Controller
 
         return redirect('/staff/manages/'.$type);
 
+    }
+
+    public function edit($type, $id)
+    {
+        return view("staff.edit." . $type)->with("skill", Skill::find($id));
+    }
+
+    public function update(Request $request, $type = "skill", $id)
+    {
+        // dd($request->all());
+        // die();
+
+        $skill = Skill::find($id);
+        $skill->SkillName = $request->input("skill_name");
+        $skill->update();
+
+        return redirect("/staff/manages/skill");
     }
 }

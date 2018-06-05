@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Seeker;
+use App\Job;
 
 class SeekerController extends Controller
 {
@@ -24,70 +25,25 @@ class SeekerController extends Controller
         return view("seeker.home");
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function apply(Request $request, $JobID)
     {
-        //
+        // dd($request->all());
+        // die();
+
+        DB::table("applyqueue")->insert([
+            "SeekerID" => Auth::guard("seeker")->user()->SeekerID,
+            "JobID" => $JobID,
+            "description" => $request->input("description"),
+            "status" => "pending"
+
+        ]);
+
+        return redirect("/seeker/home");
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function showApplyForm($JobID)
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return view("seeker.applyjob")->with("job", Job::find($JobID));
     }
 
     public function showAllJobs()

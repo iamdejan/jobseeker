@@ -34,7 +34,8 @@
                                 <tr>
                                     <td width="10%">{{ $value["SkillID"] }}</td>
                                     <td width="60%">{{ $value["SkillName"] }}</td>
-                                    <td width="10%">
+                                    <td>
+                                        <a class="btn btn-secondary" href="{{ url('/staff/skill/edit/' . $value['SkillID']) }}">Edit</a>
                                         <a class="btn btn-danger" href="{{ url('/staff/deletes/skill/'. $value['SkillID']) }}">Erase</a>
                                     </td>
                                 </tr>
