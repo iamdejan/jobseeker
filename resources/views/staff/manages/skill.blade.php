@@ -35,7 +35,7 @@
                                     <td width="10%">{{ $value["SkillID"] }}</td>
                                     <td width="60%">{{ $value["SkillName"] }}</td>
                                     <td width="10%">
-                                        <a class="btn btn-danger" href="{{ url('/staff/deletes/skill/'. $value['SkillID']) }}">Delete</a>
+                                        <a class="btn btn-danger" href="{{ url('/staff/deletes/skill/'. $value['SkillID']) }}">Erase</a>
                                     </td>
                                 </tr>
                             @endforeach

@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
-use App\Job;
+use App\Seeker;
 
 class SeekerController extends Controller
 {
@@ -92,16 +92,11 @@ class SeekerController extends Controller
 
     public function showAllJobs()
     {
-        $list = DB::table("ApplyQueue")->where("SeekerID", Auth::guard("seeker")->user()->SeekerID)
-                                       ->select("JobID")
-                                       ->pluck("JobID");
+        $seeker = Seeker::find(Auth::guard("seeker")->user()->SeekerID);
 
-        // dd($list);
+        // dd($seeker->jobsApplied[0]->pivot);
         // die();
 
-        $jobs = Job::whereIn("JobID", $list)->get();
-
-        dd($jobs);
-        die();
+        return view("seeker.jobs")->with("seeker", $seeker);
     }
 }

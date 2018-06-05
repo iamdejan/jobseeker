@@ -85,7 +85,7 @@
 
                 <div class="links">
                     <a>Giovanni Dejan</a>
-                    <a>Byran Karunachandra</a>
+                    <a>Bryan Karunachandra</a>
                     <a>Teguh Wibowo Wijaya</a>
                     <a>Vincent Tansol</a>
                 </div>

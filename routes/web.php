@@ -50,7 +50,15 @@ Route::post("/client/login", "Auth\ClientLoginController@login"); //udah
 Route::post("/client/logout", "Auth\ClientLoginController@logout"); //udah
 Route::get("/client/register", "Auth\ClientRegisterController@showRegistrationForm");
 Route::post("/client/register", "Auth\ClientRegisterController@register");
+//manage
 Route::get("/client/home", "ClientController@index");
+Route::get("/client/jobs", "ClientController@showJobs");
+Route::get("/client/seeker/{SeekerID}", "ClientController@showSeeker");
+Route::get("/client/seekers", "ClientController@showSeekers");
+Route::get("/client/job/new", "ClientController@create");
+Route::post("/client/job/store", "ClientController@store");
+Route::get("/client/deletes/job/{JobID}", "ClientController@delete");
+
 
 Route::get("/staff/login", "Auth\StaffLoginController@showLoginForm"); //udah
 Route::post("/staff/login", "Auth\StaffLoginController@login"); //udah

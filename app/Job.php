@@ -30,6 +30,6 @@ class Job extends Model
 
     public function seekers()
     {
-        return $this->belongsToMany("App\Seeker", "ApplyQueue", "JobID", "SeekerID");
+        return $this->belongsToMany("App\Seeker", "ApplyQueue", "JobID", "SeekerID")->withPivot("description", "status");;
     }
 }

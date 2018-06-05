@@ -17,6 +17,8 @@ class Client extends Authenticatable
     public $incrementing = false;
     public $keyType = "string";
 
+    protected $guarded = [];
+
     public function getAuthIdentifierName()
     {
         return "ClientEmail";
