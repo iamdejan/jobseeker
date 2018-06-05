@@ -40,6 +40,25 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="TypeID" class="col-md-4 col-form-label text-md-right">{{ __('Client Type') }}</label>
+
+                            <div class="col-md-6">
+                                <select id="TypeID" type="text" class="form-control{{ $errors->has('TypeID') ? ' is-invalid' : '' }}" name="TypeID" value="{{ old('TypeID') }}" required>
+                                    <option>Choose...</option>
+                                    @foreach(App\ClientType::all() as $type)
+                                        <option value="{{ $type->TypeID }}">{{ $type->TypeName }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('TypeID'))
+                                    <span class="invalid-feedback">
+                                        <strong>{{ $errors->first('TypeID') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="ClientEmail" class="col-md-4 col-form-label text-md-right">{{ __('Client Email') }}</label>
 
                             <div class="col-md-6">
@@ -99,7 +118,7 @@
                             <label for="ClientPassword" class="col-md-4 col-form-label text-md-right">{{ __('Client Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="ClientPassword" type="ClientPassword" class="form-control{{ $errors->has('ClientPassword') ? ' is-invalid' : '' }}" name="ClientPassword" required>
+                                <input id="ClientPassword" type="password" class="form-control{{ $errors->has('ClientPassword') ? ' is-invalid' : '' }}" name="ClientPassword" required>
 
                                 @if ($errors->has('ClientPassword'))
                                     <span class="invalid-feedback">
@@ -114,7 +133,7 @@
                             <label for="password-confirm" class="col-md-4 col-form-label text-md-right">{{ __('Confirm Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password-confirm" type="ClientAddress" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
                         </div>
 

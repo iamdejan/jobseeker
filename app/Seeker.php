@@ -17,6 +17,8 @@ class Seeker extends Authenticatable
     public $incrementing = false;
     public $keyType = "string";
 
+    protected $guarded = [];
+
     public function skills()
     {
     	return $this->belongsToMany("App\Skill", "UserSkill", "SeekerID", "SkillID");

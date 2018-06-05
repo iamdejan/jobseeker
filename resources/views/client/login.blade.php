@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="form-group row">
-                            <label for="ClientEmail" class="col-sm-4 col-form-label text-md-right">{{ __('E-Mail Klien') }}</label>
+                            <label for="ClientEmail" class="col-sm-4 col-form-label text-md-right">{{ __('Client Email') }}</label>
 
                             <div class="col-md-6">
                                 <input id="ClientEmail" type="ClientEmail" class="form-control{{ $errors->has('ClientEmail') ? ' is-invalid' : '' }}" name="ClientEmail" value="{{ old('ClientEmail') }}" required autofocus>
@@ -26,7 +26,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="ClientPassword" class="col-md-4 col-form-label text-md-right">{{ __('password') }}</label>
+                            <label for="ClientPassword" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
                                 <input id="ClientPassword" type="password" class="form-control{{ $errors->has('ClientPassword') ? ' is-invalid' : '' }}" name="ClientPassword" required>
@@ -36,16 +36,6 @@
                                         <strong>{{ $errors->first('ClientPassword') }}</strong>
                                     </span>
                                 @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> {{ __('Remember Me') }}
-                                    </label>
-                                </div>
                             </div>
                         </div>
 

@@ -72,8 +72,10 @@ class StaffRegisterController extends Controller
      */
     protected function create(array $data)
     {
+        $temp = substr(Staff::latest("StaffID")->first()->StaffID, 3);
+
         return Staff::create([
-            'StaffID' => $data['StaffID'],
+            'StaffID' => "ST" . sprintf("%04d", intval($temp) + 1),
             'StaffName' => $data['StaffName'],
             'StaffPassword' => Hash::make($data['StaffPassword']),
             'StaffPosition' => "Officer"

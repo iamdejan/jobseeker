@@ -53,11 +53,19 @@ class SeekerRegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        // return Validator::make($data, [
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:6|confirmed',
-        // ]);
+        // dd($data);
+        // die();
+
+        if($data["SeekerPassword"] &&
+           $data["SeekerPassword"] != "" &&
+           $data["SeekerPassword"] == $data["password_confirmation"]) {
+            return Validator::make($data, [
+                'fName' => 'required|string|max:190',
+                'lName' => 'required|string|max:190',
+
+            ]);
+        }
+        return false;
     }
 
     /**
@@ -67,11 +75,21 @@ class SeekerRegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
-        // return Seeker::create([
-        //     'name' => $data['name'],
-        //     'email' => $data['email'],
-        //     'password' => Hash::make($data['password']),
-        // ]);
+    {   
+        $temp = substr(Seeker::latest("SeekerID")->first()->SeekerID, 3);
+
+        // dd($SeekerID);
+        // die();
+
+        return Seeker::create([
+            'SeekerID' => "SK" . sprintf("%04d", intval($temp) + 1),
+            'fName' => $data['fName'],
+            'lName' => $data['lName'],
+            'SeekerPhone' => $data['SeekerPhone'],
+            'SeekerEmail' => $data['SeekerEmail'],
+            'SeekerAddress' => $data['SeekerAddress'],
+            'SeekerGender' => $data['SeekerGender'],
+            'SeekerPassword' => Hash::make($data['SeekerPassword']),
+        ]);
     }
 }
