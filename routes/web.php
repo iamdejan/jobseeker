@@ -18,9 +18,12 @@ Route::get('/', function () {
     return view("welcome");
 });
 
-Route::get("/jobs/search", function (Request $request) {
+Route::post("/jobs/search", function (Request $request) {
 	$keyword = $request->input("job");
 	$location = $request->input("location");
+
+	// dd($request->all());
+	// die();
 
 	$jobs = [];
 
@@ -41,14 +44,24 @@ Route::post("/seeker/login", "Auth\SeekerLoginController@login"); //udah
 Route::post("/seeker/logout", "Auth\SeekerLoginController@logout"); //udah
 Route::get("/seeker/register", "Auth\SeekerRegisterController@showRegistrationForm");
 Route::post("/seeker/register", "Auth\SeekerRegisterController@register");
+//manage
 Route::get("/seeker/home", "SeekerController@index");
+Route::get("/seeker/jobs", "SeekerController@showAllJobs");
 
 Route::get("/client/login", "Auth\ClientLoginController@showLoginForm"); //udah
 Route::post("/client/login", "Auth\ClientLoginController@login"); //udah
 Route::post("/client/logout", "Auth\ClientLoginController@logout"); //udah
 Route::get("/client/register", "Auth\ClientRegisterController@showRegistrationForm");
 Route::post("/client/register", "Auth\ClientRegisterController@register");
+//manage
 Route::get("/client/home", "ClientController@index");
+Route::get("/client/jobs", "ClientController@showJobs");
+Route::get("/client/seeker/{SeekerID}", "ClientController@showSeeker");
+Route::get("/client/seekers", "ClientController@showSeekers");
+Route::get("/client/job/new", "ClientController@create");
+Route::post("/client/job/store", "ClientController@store");
+Route::get("/client/deletes/job/{JobID}", "ClientController@delete");
+
 
 Route::get("/staff/login", "Auth\StaffLoginController@showLoginForm"); //udah
 Route::post("/staff/login", "Auth\StaffLoginController@login"); //udah

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Job;
+use App\Seeker;
+use Illuminate\Support\Facades\Auth;
 
 class ClientController extends Controller
 {
@@ -33,7 +36,7 @@ class ClientController extends Controller
      */
     public function create()
     {
-        //
+        return view("client.newjob");
     }
 
     /**
@@ -44,7 +47,22 @@ class ClientController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+        $job = new Job();
+        $job->JobID = $request->input("JobID");
+        $job->JobName = $request->input("JobName");
+        $job->JobSalary = intval($request->input("JobSalary"));
+        $job->JobDescription = $request->input("JobDesc");
+        $job->ClientNPWP = Auth::guard("client")->user()->ClientNPWP;
+        $job->StaffID = "ST0001";
+
+        // dd($job);
+        // die();
+
+        $job->save();
+
+        return redirect("/client/jobs");
+
     }
 
     /**
@@ -87,8 +105,44 @@ class ClientController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        //
+        $job = Job::find($id);
+        $job->delete();
+
+        unset($job);
+
+        return redirect("/client/jobs");
+    }
+
+    public function showJobs()
+    {
+        $jobs = Job::where("ClientNPWP", Auth::guard("client")->user()->ClientNPWP)->get();
+
+        // dd($jobs);
+        // die();
+
+        return view("client.jobs")->with("jobs", $jobs);
+    }
+    public function showSeeker($SeekerID)
+    {
+        // $jobs = Job::where("ClientNPWP", Auth::guard("client")->user()->ClientNPWP)->get();
+
+        // dd($jobs[0]->seekers);
+        // die();
+
+        $seeker = Seeker::find($SeekerID);
+        
+        // dd($seeker);
+        // die();
+
+        return view("client.seeker")->with("seeker", $seeker);
+    }
+
+    public function showSeekers()
+    {
+        $jobs = Job::all();
+
+        return view("client.seekers")->with("jobs", $jobs);
     }
 }

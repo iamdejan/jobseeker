@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use App\Seeker;
 
 class SeekerController extends Controller
 {
@@ -85,5 +88,15 @@ class SeekerController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function showAllJobs()
+    {
+        $seeker = Seeker::find(Auth::guard("seeker")->user()->SeekerID);
+
+        // dd($seeker->jobsApplied[0]->pivot);
+        // die();
+
+        return view("seeker.jobs")->with("seeker", $seeker);
     }
 }

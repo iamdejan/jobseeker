@@ -21,4 +21,9 @@ class Seeker extends Authenticatable
     {
     	return $this->belongsToMany("App\Skill", "UserSkill", "SeekerID", "SkillID");
     }
+
+    public function jobsApplied()
+    {
+        return $this->belongsToMany("App\Job", "ApplyQueue", "SeekerID", "JobID")->withPivot("description", "status");
+    }
 }

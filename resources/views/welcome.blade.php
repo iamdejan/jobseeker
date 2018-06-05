@@ -85,14 +85,14 @@
 
                 <div class="links">
                     <a>Giovanni Dejan</a>
-                    <a>Byran Karunachandra</a>
+                    <a>Bryan Karunachandra</a>
                     <a>Teguh Wibowo Wijaya</a>
                     <a>Vincent Tansol</a>
                 </div>
                 <br><br>
-                <form class="links" style="display: flex!important;">
+                <form class="links" style="display: flex!important;" method="POST" action="{{ url('/jobs/search') }}">
                     @csrf
-                    <a style="width: 50%;"><input class="form-control form-control-lg" type="text" placeholder="Job"></a>
+                    <a style="width: 50%;"><input class="form-control form-control-lg" type="text" name="job" placeholder="Job"></a>
                     <a style="width: 50%;">
                         <input class="form-control form-control-lg" type="text" name="location" placeholder="Location">
                     </a>
