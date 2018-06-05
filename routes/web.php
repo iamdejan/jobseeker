@@ -18,9 +18,12 @@ Route::get('/', function () {
     return view("welcome");
 });
 
-Route::get("/jobs/search", function (Request $request) {
+Route::post("/jobs/search", function (Request $request) {
 	$keyword = $request->input("job");
 	$location = $request->input("location");
+
+	// dd($request->all());
+	// die();
 
 	$jobs = [];
 

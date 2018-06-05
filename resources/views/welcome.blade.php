@@ -90,13 +90,13 @@
                     <a>Vincent Tansol</a>
                 </div>
                 <br><br>
-                <form class="links" style="display: flex!important;">
+                <form class="links" style="display: flex!important;" method="POST" action="{{ url('/jobs/search') }}">
                     @csrf
-                    <a style="width: 50%;"><input class="form-control form-control-lg" type="text" placeholder="Job"></a>
+                    <a style="width: 50%;"><input class="form-control form-control-lg" type="text" name="job" placeholder="Job"></a>
                     <a style="width: 50%;">
                         <input class="form-control form-control-lg" type="text" name="location" placeholder="Location">
                     </a>
-                    <a><button type="submit" class="btn btn-primary">Submit</button></a>
+                    <a><button type="submit" class="btn btn-primary">Search</button></a>
                 </form>
 
             </div>
