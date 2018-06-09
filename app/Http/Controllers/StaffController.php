@@ -74,11 +74,11 @@ class StaffController extends Controller
             $item = Job::find($id);
         }
 
-        dd($item);
-        die();
+        // dd($item);
+        // die();
 
-        // $item->delete();
-        // unset($item);
+        $item->delete();
+        unset($item);
 
         return redirect()->back();
     }
